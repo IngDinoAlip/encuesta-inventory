@@ -171,8 +171,7 @@ const SURVEY = {
     { grupo: "Administración", id: "SSO", titulo: "Usuarios SSO", url: "https://sistema.miel-robotschool.com/modules/usuarios_sso/index.php", desc: "Gestión centralizada de acceso a todas las plataformas", img: "cap_SSO" },
     { grupo: "Administración", id: "ROL", titulo: "Roles y Permisos", url: "https://sistema.miel-robotschool.com/modules/usuarios/roles.php", desc: "Controla qué módulos y acciones puede usar cada rol", img: "cap_ROL" },
     { grupo: "Administración", id: "SBE", titulo: "Orden del Sidebar", url: "https://sistema.miel-robotschool.com/modules/usuarios/sidebar.php", desc: "Cambiar el orden de las secciones del menú lateral", img: "cap_SBE" },
-    { grupo: "Administración", id: "CAT", titulo: "Categorías", url: "https://sistema.miel-robotschool.com/modules/elementos/categorias.php", desc: "Categorías de elementos", img: "cap_CAT" },
-    { grupo: "Administración", id: "CFG", titulo: "Configuración", url: "https://sistema.miel-robotschool.com/modules/auth/config.php", desc: "Información del entorno de ejecución (solo lectura)", img: null }
+    { grupo: "Administración", id: "CAT", titulo: "Categorías", url: "https://sistema.miel-robotschool.com/modules/elementos/categorias.php", desc: "Categorías de elementos", img: "cap_CAT" }
   ],
 
   grupos: ["General", "Operaciones", "Importaciones", "Tienda y producción", "Comercial", "Reportes", "Administración"],
@@ -544,7 +543,7 @@ function payload() {
 }
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 async function verify(p) {
-  for (let i = 0; i < 4; i++) {
+  for (let i = 0; i < 6; i++) {
     await sleep(1300 * (i + 1));
     try { const r = await fetch(ENDPOINT + (ENDPOINT.includes('?') ? '&' : '?') + 'check=' + encodeURIComponent(p.id)); const j = await r.json(); if (j.found && j.enviado === p.enviado) return true; } catch (e) {}
   }
